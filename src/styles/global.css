@@ -1,0 +1,183 @@
+@import './tokens.css';
+
+:root {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--clr-text);
+  background: var(--clr-bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--clr-bg);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
+/* ── Shared panel base ── */
+.panel {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--clr-border);
+  box-shadow: var(--shadow-panel);
+  padding: 2rem;
+  background: var(--clr-surface);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.panel::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(99, 179, 237, 0.5), transparent);
+  pointer-events: none;
+}
+
+.panel-animate { animation: fadeUp 0.75s ease-out both; }
+.panel-animate:nth-of-type(2) { animation-delay: 0.08s; }
+.panel-animate:nth-of-type(3) { animation-delay: 0.16s; }
+.panel-animate:nth-of-type(4) { animation-delay: 0.24s; }
+.panel-animate:nth-of-type(5) { animation-delay: 0.32s; }
+
+/* ── Shared section heading ── */
+.section-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.22rem;
+  font-weight: 700;
+  font-size: 0.75rem;
+  background: var(--grad-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-heading {
+  margin-bottom: 1.2rem;
+}
+
+.section-heading h2 {
+  margin-top: 0.2rem;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--clr-text);
+  letter-spacing: -0.01em;
+}
+
+/* ── Shared chip ── */
+.chip {
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius-full);
+  background: rgba(37, 99, 235, 0.15);
+  color: var(--clr-blue-muted);
+  font-weight: 600;
+  font-size: 0.85rem;
+  border: 1px solid rgba(37, 99, 235, 0.25);
+  transition: background var(--transition), border-color var(--transition), transform var(--transition);
+  animation: chipPop 0.3s ease both;
+}
+
+.chip:hover {
+  background: rgba(37, 99, 235, 0.28);
+  border-color: rgba(99, 179, 237, 0.5);
+  transform: translateY(-2px);
+}
+
+.chip-sm {
+  padding: 0.25rem 0.6rem;
+  font-size: 0.75rem;
+}
+
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+/* ── Shared button styles ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  padding: 0.8rem 1.6rem;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  background: var(--grad-accent);
+  color: white;
+  box-shadow: var(--shadow-btn), 0 0 0 1px rgba(99, 179, 237, 0.2);
+  transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(37, 99, 235, 0.55);
+  filter: brightness(1.1);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  padding: 0.8rem 1.6rem;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--clr-text);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: transform var(--transition), background var(--transition);
+}
+
+.btn-secondary:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes chipPop {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .panel { padding: 1.4rem; }
+}

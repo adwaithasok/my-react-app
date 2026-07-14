@@ -1,0 +1,64 @@
+.groups { display: grid; gap: 0.6rem; }
+
+.group {
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color var(--transition);
+  cursor: pointer;
+}
+
+.group:hover,
+.groupOpen {
+  border-color: var(--clr-border-accent);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.85rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  user-select: none;
+}
+
+.groupOpen .header {
+  background: rgba(37, 99, 235, 0.1);
+}
+
+.icon { font-size: 1.1rem; }
+
+.name {
+  flex: 1;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--clr-text);
+}
+
+.count {
+  background: rgba(37, 99, 235, 0.2);
+  color: var(--clr-blue-light);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+}
+
+.arrow {
+  color: var(--clr-text-dim);
+  font-size: 0.7rem;
+}
+
+.groupOpen .arrow { color: var(--clr-blue-light); }
+
+.body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.2s;
+  padding: 0 1rem;
+}
+
+.groupOpen .body {
+  max-height: 300px;
+  padding: 0.8rem 1rem 1rem;
+}

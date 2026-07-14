@@ -1,0 +1,94 @@
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 0.9rem;
+  border-radius: var(--radius-full);
+  background: rgba(6, 13, 26, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.12), 0 20px 50px rgba(0, 0, 0, 0.5);
+  position: sticky;
+  top: 1rem;
+  z-index: 20;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.topbarScrolled {
+  background: rgba(6, 13, 26, 0.92);
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.2), 0 24px 60px rgba(0, 0, 0, 0.6);
+}
+
+.brandMark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: var(--radius-full);
+  background: var(--grad-brand);
+  color: white;
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-decoration: none;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.3), 0 0 20px rgba(37, 99, 235, 0.4);
+  flex-shrink: 0;
+}
+
+.topnav {
+  display: flex;
+  gap: 0.15rem;
+  flex-wrap: wrap;
+}
+
+.topnav a {
+  color: rgba(248, 250, 252, 0.6);
+  text-decoration: none;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+  transition: background var(--transition), color var(--transition);
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+.topnav a:hover {
+  background: rgba(37, 99, 235, 0.15);
+  color: var(--clr-text);
+}
+
+.navActive {
+  color: var(--clr-blue-light) !important;
+  background: rgba(37, 99, 235, 0.18) !important;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1.2rem;
+  border-radius: var(--radius-full);
+  background: var(--grad-accent);
+  color: white;
+  font-weight: 700;
+  font-size: 0.88rem;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.35);
+  transition: transform var(--transition), box-shadow var(--transition);
+  flex-shrink: 0;
+}
+
+.cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.5);
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    border-radius: var(--radius-lg);
+    padding: 0.7rem 0.9rem;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    top: 0.5rem;
+  }
+  .cta { display: none; }
+}

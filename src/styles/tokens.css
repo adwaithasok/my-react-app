@@ -1,0 +1,42 @@
+:root {
+  /* Colors */
+  --clr-bg:          #07111f;
+  --clr-bg-deep:     #060d1a;
+  --clr-surface:     rgba(11, 22, 44, 0.65);
+  --clr-surface-alt: rgba(255, 255, 255, 0.04);
+  --clr-border:      rgba(255, 255, 255, 0.08);
+  --clr-border-accent: rgba(37, 99, 235, 0.4);
+
+  --clr-accent:      #2563eb;
+  --clr-accent-dark: #1d4ed8;
+  --clr-accent-glow: rgba(37, 99, 235, 0.4);
+  --clr-teal:        #0e7490;
+  --clr-green:       #34d399;
+  --clr-blue-light:  #60a5fa;
+  --clr-blue-muted:  #93c5fd;
+
+  --clr-text:        #f1f5f9;
+  --clr-text-muted:  #94a3b8;
+  --clr-text-dim:    #64748b;
+  --clr-text-label:  #cbd5e1;
+
+  /* Gradients */
+  --grad-accent:     linear-gradient(135deg, var(--clr-accent), var(--clr-accent-dark));
+  --grad-brand:      linear-gradient(135deg, var(--clr-accent), var(--clr-teal));
+  --grad-text:       linear-gradient(90deg, var(--clr-blue-light), var(--clr-green));
+
+  /* Radii */
+  --radius-sm:   0.6rem;
+  --radius-md:   1rem;
+  --radius-lg:   1.2rem;
+  --radius-xl:   1.75rem;
+  --radius-full: 999px;
+
+  /* Shadows */
+  --shadow-panel: 0 32px 80px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  --shadow-card:  0 20px 50px rgba(0, 0, 0, 0.4);
+  --shadow-btn:   0 8px 24px var(--clr-accent-glow);
+
+  /* Transitions */
+  --transition: 0.2s ease;
+}
