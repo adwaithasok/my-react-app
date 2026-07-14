@@ -19,6 +19,11 @@
 body {
   margin: 0;
   background: var(--clr-bg);
+  min-height: 100%;
+}
+
+html {
+  background: var(--clr-bg);
 }
 
 #root {

@@ -1,16 +1,81 @@
-# React + Vite
+# Adwaith C — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio website for **Adwaith C**, Senior Flutter Developer. Built with React + Vite, styled with CSS Modules, and powered by Firebase Firestore.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 18** — UI
+- **Vite** — build tool + dev server
+- **Firebase Firestore** — live data (profile, skills, experience, projects)
+- **CSS Modules** — scoped per-component styles
+- **CSS Variables** — design tokens in `src/styles/tokens.css`
 
-## React Compiler
+## Project Structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```
+src/
+├── components/
+│   ├── Topbar/         # Sticky nav → fixed full-width on scroll
+│   ├── Hero/           # Intro + stats
+│   ├── About/          # Profile info, education, certifications
+│   ├── Skills/         # Accordion skill groups
+│   ├── Experience/     # Timeline with sub-projects
+│   ├── Projects/       # Cards + modal popup
+│   └── Contact/        # Form → saves to Firestore
+├── hooks/
+│   ├── usePortfolioData.js   # Fetches all data from Firestore
+│   └── useContactForm.js     # Contact form state + submit
+├── services/
+│   └── firebase.js           # Firebase init + Firestore client
+├── styles/
+│   ├── tokens.css            # CSS variables (colors, spacing, shadows)
+│   └── global.css            # Shared classes (panel, chip, btn, animations)
+├── data/
+│   └── profile.js            # Static fallback / reference data
+├── App.jsx
+└── App.css                   # Page shell + content grid only
+scripts/
+├── data.json                 # Source of truth for Firestore seed
+└── seed.py                   # Python script to seed Firestore
+```
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+npm run dev
+```
+
+## Environment Variables
+
+Create a `.env` file in the root:
+
+```
+VITE_FIREBASE_API_KEY=
+VITE_FIREBASE_AUTH_DOMAIN=
+VITE_FIREBASE_PROJECT_ID=
+VITE_FIREBASE_STORAGE_BUCKET=
+VITE_FIREBASE_MESSAGING_SENDER_ID=
+VITE_FIREBASE_APP_ID=
+```
+
+## Seeding Firestore
+
+```bash
+cd scripts
+pip install firebase-admin
+python seed.py
+```
+
+Requires `scripts/serviceAccountKey.json` (Firebase Admin SDK key — never commit this).
+
+## Firestore Collections
+
+| Collection | Description |
+|---|---|
+| `portfolio/profile` | Name, title, contact info, education |
+| `portfolio/meta` | Hero stats, nav links |
+| `skillGroups` | Skill categories with icons |
+| `experience` | Work history with sub-projects |
+| `projects` | Project cards with details + tech stack |
+| `contacts` | Messages submitted via contact form |

@@ -1,4 +1,5 @@
-import { useContactForm } from '../hooks/useContactForm'
+import styles from './Contact.module.css'
+import { useContactForm } from '../../hooks/useContactForm'
 
 export default function Contact() {
   const { formData, status, handleChange, handleSubmit } = useContactForm()
@@ -9,7 +10,7 @@ export default function Contact() {
         <p className="section-kicker">Contact</p>
         <h2>Let&apos;s Talk</h2>
       </div>
-      <form className="contact-form" onSubmit={handleSubmit}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <label>
           Name
           <input name="name" value={formData.name} onChange={handleChange} required />
@@ -22,8 +23,8 @@ export default function Contact() {
           Message
           <textarea name="message" rows="5" value={formData.message} onChange={handleChange} required />
         </label>
-        <button type="submit">Send Message</button>
-        {status && <p className="status" aria-live="polite">{status}</p>}
+        <button className="btn-primary" type="submit">Send Message</button>
+        {status && <p className={styles.status} aria-live="polite">{status}</p>}
       </form>
     </section>
   )

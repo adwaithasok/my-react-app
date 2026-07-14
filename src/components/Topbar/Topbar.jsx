@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import { navLinks } from '../data/profile'
+import styles from './Topbar.module.css'
 
-export default function Topbar() {
-  const [active, setActive] = useState('')
+export default function Topbar({ navLinks }) {
+  const [active, setActive]     = useState('')
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -12,6 +12,7 @@ export default function Topbar() {
   }, [])
 
   useEffect(() => {
+    if (!navLinks?.length) return
     const observers = []
     navLinks.forEach(({ href }) => {
       const el = document.querySelector(href)
@@ -24,27 +25,23 @@ export default function Topbar() {
       observers.push(obs)
     })
     return () => observers.forEach((o) => o.disconnect())
-  }, [])
+  }, [navLinks])
 
   return (
-    <header className={`topbar ${scrolled ? 'topbar--scrolled' : ''}`}>
-      <a className="brand-mark" href="#top">
-        <span className="brand-initials">AC</span>
-      </a>
-
-      <nav className="topnav" aria-label="Primary navigation">
-        {navLinks.map((link) => (
+    <header className={`${styles.topbar} ${scrolled ? styles.topbarScrolled : ''}`}>
+      <a className={styles.brandMark} href="#top">AC</a>
+      <nav className={styles.topnav} aria-label="Primary navigation">
+        {navLinks?.map((link) => (
           <a
             key={link.href}
             href={link.href}
-            className={active === link.href ? 'nav-active' : ''}
+            className={active === link.href ? styles.navActive : ''}
           >
             {link.label}
           </a>
         ))}
       </nav>
-
-      <a className="topbar-cta" href="#contact">Hire Me</a>
+      <a className={styles.cta} href="#contact">Hire Me</a>
     </header>
   )
 }

@@ -1,5 +1,5 @@
 import { useReducer, useState } from 'react'
-import { submitContactMessage } from '../firebase'
+import { submitContactMessage } from '../services/firebase'
 
 const emptyForm = { name: '', email: '', message: '' }
 
